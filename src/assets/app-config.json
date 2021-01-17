@@ -1,0 +1,5 @@
+{
+  "servicesBaseUrl": "https://localhost:8080/api",
+  "solutionProposalURLLocal": "http://localhost:8080/solutionProposal",
+  "solutionProposalURL":"http://139.59.144.247:8080/solutionProposal"
+}

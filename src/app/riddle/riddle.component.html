@@ -1,0 +1,38 @@
+<div class="centred-table">
+
+  <table class="centred-table">
+    <tbody>
+    <tr>
+      <td>PD Escape Room</td>
+    </tr>
+    <tr>
+      <td>
+      <form class="example-form" (ngSubmit)="proposeSolution()" >
+        <mat-form-field class="example-full-width">
+          <mat-label>Code</mat-label>
+          <input type="text" matInput [formControl]="codeFormControl" placeholder="12345">
+
+          <mat-error *ngIf="codeFormControl.hasError('required')">
+            Code is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="codeFormControl.hasError('incorrect')">
+            Code is <strong>incorrect</strong>
+          </mat-error>
+        </mat-form-field>
+      <button mat-button type="submit" [disabled]="!codeFormControl.valid" >Submit</button>
+      </form>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Result</mat-label>
+          <textarea [formControl]="resultFormControl"  matInput placeholder="Ex. It makes me feel... " [readonly]="true" [mat-autosize]="true"></textarea>
+        </mat-form-field>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<img *ngIf="showImage" src="/assets/Wimmelbild.png" alt="Girl in a jacket" width="1024" height="720">
