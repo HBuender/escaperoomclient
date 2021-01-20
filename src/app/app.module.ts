@@ -50,9 +50,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     HttpClientModule
 
   ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

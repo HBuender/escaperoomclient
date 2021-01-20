@@ -4,11 +4,17 @@
   width: 100%;
 }
 
+.titleBold{
+  font-family: sans-serif;
+  size: 48px;
+  line-height: 57px;
+}
+
 .example-full-width {
   width: 100%;
 }
 
-td {
+.td {
   padding-right: 8px;
 }
 
@@ -22,7 +28,6 @@ td {
 .centred-table {
   height: 50vh;
   width: 600px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: left;
 }
+
