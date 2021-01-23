@@ -1,49 +1,144 @@
-
-
-
-<div class="centred-table">
-  <table class="centred-table">
+<div>
+  <table class="riddleTable">
     <tbody>
     <tr>
-
-    </tr>
-    <tr>
       <td>
-      <h1 class="titleBold">PD Escape Room</h1>
+        <h1 >PD Escape Room</h1>
       </td>
     </tr>
     <tr>
-      <td>
-      <form class="example-form" (ngSubmit)="proposeSolution()" >
-        <mat-form-field class="example-full-width">
-          <mat-label>Code</mat-label>
-          <input type="text" matInput [formControl]="codeFormControl" placeholder="12345">
-
-          <mat-error *ngIf="codeFormControl.hasError('required')">
-            Code is <strong>required</strong>
-          </mat-error>
-          <mat-error *ngIf="codeFormControl.hasError('incorrect')">
-            Code is <strong>incorrect</strong>
-          </mat-error>
-        </mat-form-field>
-      <button mat-button type="submit" [disabled]="!codeFormControl.valid" >Submit</button>
-      </form>
-      </td>
+      <img  src="/assets/AlwaysTogetherAlwaysLockedUp.png" alt="Wimmelbild" width="400" height="240">
+    </tr>
+    <tr class="blocksatz">
+      <i>Welcome to our virtual Escape Room Game</i>
+      <br>
+      <b>The one and only “Escape the MS Teams Room” challenge!</b>
+      <br>Your task as a team for the next <b>60 minutes</b> is to solve four riddles.
+      <br>The solution to each riddle is a code.
+      <br>After having solved one riddle, you must enter the code within this website.
+      <br>You will then receive instructions to the next riddle.
+      <br>For each of the first three riddles, there are five different pieces that you as a team must put together.
+      <br>
+      <br>Here are the links to the five pieces:
+      <br>Piece A: <a target="_blank"  href="assets/pdfs/A.pdf" download>Riddles for the first Player</a>
+      <br>Piece B: <a target="_blank"  href="assets/pdfs/B.pdf">Riddles for the second Player</a>
+      <br>Piece C: <a target="_blank"  href="assets/pdfs/C.pdf">Riddles for the third Player</a>
+      <br>Piece D: <a target="_blank"  href="assets/pdfs/D.pdf">Riddles for the fourth Player</a>
+      <br>Piece E: <a target="_blank"  href="assets/pdfs/E.pdf">Riddles for the fifth Player</a>
+      <br>
+      <br>It is recommendable that each player takes care of one piece, in order for you to be fast.
+      <br>The team which solves all the riddles the fastest, wins!”
+      <div *ngIf="showFirstRiddle">
+      <br *ngIf="!showImage"> All clear? If so, start with the first riddle right below”
+      </div>
+      <hr>
+      <br>
+      <div *ngIf="showFirstRiddle">“Let’s start the game with the history geek challenge. Be fast in finding out the correct answers and sum them up to a four-digit code.”</div>
     </tr>
     <tr>
       <td>
-        <mat-form-field class="example-full-width">
+        <form class="example-form" (ngSubmit)="proposeSolution()" >
+          <mat-form-field class="example-full-width">
+            <mat-label>Code</mat-label>
+            <input type="text" matInput [formControl]="codeFormControl" placeholder="12345">
+
+            <mat-error *ngIf="codeFormControl.hasError('required')">
+              Code is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="codeFormControl.hasError('incorrect')">
+              Code is <strong>incorrect</strong>
+            </mat-error>
+          </mat-form-field>
+          <button mat-button type="submit" [disabled]="!codeFormControl.valid" >Submit</button>
+        </form>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width-result">
           <mat-label>Result</mat-label>
           <textarea [formControl]="resultFormControl"  matInput placeholder="Ex. It makes me feel... " [readonly]="true" [mat-autosize]="true"></textarea>
         </mat-form-field>
       </td>
-      </tr>
+      <td></td>
+    </tr>
     <tr>
       <td>
         <img  *ngIf="showImage" src="/assets/Wimmelbild.png" alt="Wimmelbild" width="1024" height="720">
+        <img  *ngIf="showTicker" src="/assets/ticker.gif" alt="Ticker" width="1024" height="720">
       </td>
+      <td></td>
     </tr>
     </tbody>
   </table>
 </div>
 
+<!--
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="left">
+  <div fxFlex="flGrow">
+    <img mat-card-image class="img" src="/assets/AlwaysTogetherAlwaysLockedUp.png"  >
+  </div>
+  <div fxFlex="fxFlex">
+
+  </div>
+</div>
+
+-->
+
+
+<!--
+<div class="row">
+  <div class="column">
+    <img  src="/assets/AlwaysTogetherAlwaysLockedUp.png" alt="Wimmelbild" width="600" height="480">
+  </div>
+  <div class="column">
+  <div class="centred-table">
+    <table class="centred-table">
+      <tbody>
+      <tr>
+      <td>
+        <h1 class="titleBold">PD Escape Room</h1>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+        <form class="example-form" (ngSubmit)="proposeSolution()" >
+          <mat-form-field class="example-full-width">
+            <mat-label>Code</mat-label>
+            <input type="text" matInput [formControl]="codeFormControl" placeholder="12345">
+
+            <mat-error *ngIf="codeFormControl.hasError('required')">
+              Code is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="codeFormControl.hasError('incorrect')">
+              Code is <strong>incorrect</strong>
+            </mat-error>
+          </mat-form-field>
+        <button mat-button type="submit" [disabled]="!codeFormControl.valid" >Submit</button>
+        </form>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Result</mat-label>
+            <textarea [formControl]="resultFormControl"  matInput placeholder="Ex. It makes me feel... " [readonly]="true" [mat-autosize]="true"></textarea>
+          </mat-form-field>
+        </td>
+        <td></td>
+        </tr>
+      <tr>
+        <td>
+          <img  *ngIf="showImage" src="/assets/Wimmelbild.png" alt="Wimmelbild" width="1024" height="720">
+        </td>
+        <td></td>
+      </tr>
+      </tbody>
+  </table>
+  </div>
+  </div>
+</div>
+-->

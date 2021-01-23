@@ -1,7 +1,22 @@
+.riddleTable{
+  padding: 100px;
+  padding-top: 10px;
+  width: 100%;
+  align-content: center;
+}
+
+.center{
+  align-content: center;
+}
+
 .example-form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
+}
+
+.blocksatz{
+  text-align: justify;
 }
 
 .titleBold{
@@ -12,22 +27,38 @@
 
 .example-full-width {
   width: 100%;
+  border: none;
+}
+.example-full-width-result {
+  width: 50%;
+  border: none;
 }
 
-.td {
-  padding-right: 8px;
-}
 
 .main-div{
   height: 50vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+
+
 }
 
 .centred-table {
   height: 50vh;
-  width: 600px;
+  width: 400px;
   text-align: left;
 }
 
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -22,6 +22,8 @@ export class RiddleComponent implements OnInit {
   ]);
   resultFormControl= new FormControl();
   showImage=false;
+  showTicker=false;
+  showFirstRiddle=true;
   ngOnInit(): void {
   }
 
@@ -33,6 +35,8 @@ export class RiddleComponent implements OnInit {
       if(data.correct){
         this.resultFormControl.setValue( data.hint);
         this.showImage = data.showImage;
+        this.showTicker=data.showTicker;
+        this.showFirstRiddle=false;
       }else{
         this.codeFormControl.setErrors({'incorrect':true});
       }

@@ -13,6 +13,8 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/compiler';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -32,9 +34,11 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
+    MatToolbarModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule,
   ],
   exports: [
     MatFormFieldModule,
