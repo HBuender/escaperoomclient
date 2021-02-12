@@ -1,64 +1,52 @@
-.riddleTable{
-  padding: 100px;
-  padding-top: 10px;
-  width: 100%;
-  align-content: center;
+.flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+
+  /* Then we define the flow direction
+     and if we allow the items to wrap
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.flex-textitem{
+
+  text-align: center;
+  flex-basis: 100%;
+  flex: 0 0 33.333333%;
+}
+.flex-item {
+  padding: 5px;
+  width: 400px;
+  height: 150px;
+  margin-top: 10px;
+  line-height: 150px;
+  color: darkgrey;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
+.flex-button {
+  padding: 5px;
+  margin-top: 10px;
+  text-align: center;
 }
 
-.center{
-  align-content: center;
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 33%;
 }
-
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.blocksatz{
-  text-align: justify;
-}
-
-.titleBold{
-  font-family: sans-serif;
-  size: 48px;
-  line-height: 57px;
-}
-
 .example-full-width {
   width: 100%;
   border: none;
-}
-.example-full-width-result {
-  width: 50%;
-  border: none;
-}
-
-
-.main-div{
-  height: 50vh;
-  display: flex;
-
-
-}
-
-.centred-table {
-  height: 50vh;
-  width: 400px;
-  text-align: left;
-}
-
-/* Create two equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 50%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
 }

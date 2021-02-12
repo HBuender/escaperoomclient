@@ -24,6 +24,7 @@ export class RiddleComponent implements OnInit {
   showImage=false;
   showTicker=false;
   showFirstRiddle=true;
+  riddle=`My First <br> Riddle`;
   ngOnInit(): void {
   }
 
