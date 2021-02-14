@@ -13,10 +13,10 @@
   flex-flow: row wrap;
 }
 .item {
-  background-color: tomato;
+  //background-color: tomato;
   box-sizing: border-box;
   padding: 20px;
-  outline: 2px solid blue;
+  //outline: 2px solid blue;
   flex: 1;
   text-align: center;
 }
@@ -41,46 +41,7 @@
   }
 }
 
-.flex-container {
-  /* We first create a flex layout context */
-  display: flex;
 
-  /* Then we define the flow direction
-     and if we allow the items to wrap
-   * Remember this is the same as:
-   * flex-direction: row;
-   * flex-wrap: wrap;
-   */
-  flex-flow: row wrap;
-
-  /* Then we define how is distributed the remaining space */
-  justify-content: space-around;
-
-  padding: 0;
-  margin: 0;
-  list-style: none;
-
-
-}
-.flex-textitem{
-
-  text-align: center;
-  flex-basis: 100%;
-  flex: 0 0 33.333333%;
-  border-color: blue;
-  border-style: dashed;
-}
-.flex-item {
-  padding: 5px;
-  width: 400px;
-  height: 150px;
-  margin-top: 10px;
-  line-height: 150px;
-  color: darkgrey;
-  font-weight: bold;
-  font-size: 3em;
-  text-align: center;
-}
 .flex-button {
   padding: 5px;
   margin-top: 10px;
@@ -95,8 +56,8 @@
 }
 
 .collapsible {
-
   cursor: pointer;
+  background: #FAFAFA;
   padding: 2px;
   width: 100%;
   border: none;
@@ -105,7 +66,4 @@
   font-size: 15px;
   font-family: "Source Sans Pro Black";
 }
-.example-full-width {
-  width: 100%;
-  border: none;
-}
+
