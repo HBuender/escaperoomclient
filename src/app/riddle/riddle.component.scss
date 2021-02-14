@@ -1,3 +1,46 @@
+@mixin max-width($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+}
+.container {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+}
+.item {
+  background-color: tomato;
+  box-sizing: border-box;
+  padding: 20px;
+  outline: 2px solid blue;
+  flex: 1;
+  text-align: center;
+}
+.media-item{
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  grid-column: span 3;
+}
+
+@include max-width(992px) {
+  .item {
+    flex-basis: 25%;
+    background-color: red;
+  }
+}
+
+@include max-width(640px) {
+  .item {
+    flex-basis: 50%;
+    background-color: green;
+  }
+}
+
 .flex-container {
   /* We first create a flex layout context */
   display: flex;
@@ -16,12 +59,16 @@
   padding: 0;
   margin: 0;
   list-style: none;
+
+
 }
 .flex-textitem{
 
   text-align: center;
   flex-basis: 100%;
   flex: 0 0 33.333333%;
+  border-color: blue;
+  border-style: dashed;
 }
 .flex-item {
   padding: 5px;
@@ -44,7 +91,19 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 33%;
+  width: 50%;
+}
+
+.collapsible {
+
+  cursor: pointer;
+  padding: 2px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  font-family: "Source Sans Pro Black";
 }
 .example-full-width {
   width: 100%;

@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {SolutionAPIService} from '../services/solution-api.service';
 import {SolutionProposal} from '../model/solution-proposal';
 import {SolutionResult} from '../model/solution-result';
+import {EscapeRoom} from '../model/escape-room';
+import {AppConfigService} from '../services/app-config.service';
 
 @Component({
   selector: 'app-riddle',
@@ -12,7 +14,7 @@ import {SolutionResult} from '../model/solution-result';
 })
 export class RiddleComponent implements OnInit {
 
-  constructor( private route: ActivatedRoute,
+  constructor( private environment: AppConfigService,  private route: ActivatedRoute,
                private router: Router,
                private solutionService: SolutionAPIService) {
   }
@@ -20,27 +22,51 @@ export class RiddleComponent implements OnInit {
   codeFormControl = new FormControl('', [
     Validators.required,
   ]);
-  resultFormControl= new FormControl();
-  showImage=false;
-  showTicker=false;
-  showFirstRiddle=true;
-  riddle=`My First <br> Riddle`;
+  resultFormControl = new FormControl();
+  showInfoText = true;
+  showHints = true;
+  showAreYouReady = true;
+  mediaContent = '';
+  riddleNumber = '1';
+  riddle = `Could not be loaded`;
   ngOnInit(): void {
+    this.solutionService.initEscapeRoom().subscribe((data: EscapeRoom) => {
+      this.riddleNumber = '1';
+      this.riddle = data.initialRiddle;
+  });
+  }
+
+  toggleShowInfoText(): void{
+    this.showInfoText = !this.showInfoText;
+  }
+
+  toggleShowHints(): void{
+    this.showHints = !this.showHints;
+  }
+  toggleShowFirstRiddle(): void{
+    this.showHints = false;
+    this.showInfoText = false;
+    this.showAreYouReady = false;
+
   }
 
   proposeSolution(): void {
     console.log(this.codeFormControl.value);
     this.solutionService.proposeSolution(new SolutionProposal(this.codeFormControl.value)).subscribe((data: SolutionResult) => {
       console.log(data);
-      console.log(data.hint);
-      if(data.correct){
-        this.resultFormControl.setValue( data.hint);
-        this.showImage = data.showImage;
-        this.showTicker=data.showTicker;
-        this.showFirstRiddle=false;
+      console.log(data.riddle);
+      if (data.correct){
+        this.riddle = data.riddle;
+        this.riddleNumber = data.riddleNumber;
+        if (data.imageURL != null){
+            console.log(`<img src="` + this.environment.config.servicesBaseUrl + data.imageURL + `"/>`);
+            this.mediaContent = `<img src="` + this.environment.config.servicesBaseUrl + data.imageURL + `"/>`;
+        }else {
+          this.mediaContent = '';
+        }
       }else{
-        this.codeFormControl.setErrors({'incorrect':true});
+        this.codeFormControl.setErrors({incorrect: true});
       }
-    });;
+    });
   }
 }

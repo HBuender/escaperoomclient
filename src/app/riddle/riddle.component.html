@@ -1,38 +1,61 @@
-<img  class="center" src="/assets/AlwaysTogetherAlwaysLockedUp.png" alt="Wimmelbild" >
-<div class="flex-container">
-  <div class="flex-textitem"></div>
-  <div class="flex-textitem">
-    <i>Welcome to our virtual Escape Room Game</i>
-    <br>
-    <b>The one and only “Escape the MS Teams Room” challenge!</b>
-    <br>Your task as a team for the next <b>60 minutes</b> is to solve four riddles.
+<div class="wrapper">
+  <!-- Header Row - Logo -->
+  <div class="item"></div>
+  <img  class="center" src="/assets/SW_ConnectionRoom.png" alt="Serviceware Connection Room" >
+  <div class="item"></div>
+  <!-- Collabsiple Welcome Text -->
+  <div class="item"></div>
+  <div class="item">
+    <button type="button" class="collapsible" (click)="toggleShowInfoText()"><h1><i>Welcome to the virtual Serviceware Connection Room</i></h1></button>
+    <div *ngIf="showInfoText">
+    Your task as a team for the next <b>60 minutes</b> is to solve four riddles.
     <br>The solution to each riddle is a code.
     <br>After having solved one riddle, you must enter the code within this website.
     <br>You will then receive instructions to the next riddle.
     <br>For each of the first three riddles, there are five different pieces that you as a team must put together.
-    <br>
-    <br>Here are the links to the five pieces:
-    <br>Piece A: <a target="_blank"  href="assets/pdfs/A.pdf" download>Riddles for the first Player</a>
-    <br>Piece B: <a target="_blank"  href="assets/pdfs/B.pdf">Riddles for the second Player</a>
-    <br>Piece C: <a target="_blank"  href="assets/pdfs/C.pdf">Riddles for the third Player</a>
-    <br>Piece D: <a target="_blank"  href="assets/pdfs/D.pdf">Riddles for the fourth Player</a>
-    <br>Piece E: <a target="_blank"  href="assets/pdfs/E.pdf">Riddles for the fifth Player</a>
-    <br>
-    <br>It is recommendable that each player takes care of one piece, in order for you to be fast.
     <br>The team which solves all the riddles the fastest, wins!”
-    <div *ngIf="showFirstRiddle">
-      <br *ngIf="!showImage"> All clear? If so, start with the first riddle right below”
     </div>
-    <hr>
-    <br>
-    <div *ngIf="showFirstRiddle">“Let’s start the game with the history geek challenge. Be fast in finding out the correct answers and sum them up to a four-digit code.”</div>
-    <!--<span [innerHtml]="riddle"></span>-->
-    <img  *ngIf="showImage" src="/assets/Wimmelbild.png" alt="Wimmelbild" width="1024" height="720">
-    <img  *ngIf="showTicker" src="/assets/ticker.gif" alt="Ticker" width="1024" height="720">
   </div>
-  <div class="flex-textitem"></div>
-  <div class="flex-textitem"></div>
-  <form class="flex-item" (ngSubmit)="proposeSolution()" >
+  <div class="item"></div>
+  <!-- Collabsiple Hints -->
+  <div class="item"></div>
+  <div class="item">
+      <button type="button" class="collapsible" (click)="toggleShowHints()"><i>Hints</i></button>
+      <div *ngIf="showHints" >
+        <br>Here are the links to the five pieces:
+        <br>Piece A: <a target="_blank"  href="assets/pdfs/A.pdf">Riddles for the first Player</a>
+        <br>Piece B: <a target="_blank"  href="assets/pdfs/B.pdf">Riddles for the second Player</a>
+        <br>Piece C: <a target="_blank"  href="assets/pdfs/C.pdf">Riddles for the third Player</a>
+        <br>Piece D: <a target="_blank"  href="assets/pdfs/D.pdf">Riddles for the fourth Player</a>
+        <br>Piece E: <a target="_blank"  href="assets/pdfs/E.pdf">Riddles for the fifth Player</a>
+        <br>
+        <br>It is recommendable that each player takes care of one piece, in order for you to be fast.
+      </div>
+  </div>
+  <div class="item"></div>
+  <!-- Are you ready? -->
+  <div *ngIf="showAreYouReady" class="item"></div>
+  <div *ngIf="showAreYouReady"class="item">
+      <b>All clear?</b>
+      <br><button type="button" (click)="toggleShowFirstRiddle()"><i>Let's get started!</i></button>
+  </div>
+  <div *ngIf="showAreYouReady" class="item"></div>
+
+  <!-- Riddle Media Content -->
+  <div class="media-item">
+    <span [innerHtml]="mediaContent"></span>
+  </div>
+  <!-- Riddle Row -->
+  <div *ngIf="!showAreYouReady" class="item"></div>
+  <div *ngIf="!showAreYouReady" class="item">
+    <h2>Riddle {{riddleNumber}}</h2>
+    <span [innerHtml]="riddle"></span>
+  </div>
+  <!-- <img  *ngIf="showTicker" src="/assets/ticker.gif" alt="Ticker" width="1024" height="720">-->
+  <div *ngIf="!showAreYouReady" class="item"></div>
+
+  <div  *ngIf="!showAreYouReady" class="item"></div>
+  <form  *ngIf="!showAreYouReady"  class="item" (ngSubmit)="proposeSolution()" >
     <mat-form-field >
       <mat-label>Code</mat-label>
       <input type="text" matInput [formControl]="codeFormControl" placeholder="12345">
@@ -44,11 +67,13 @@
         Code is <strong>incorrect</strong>
       </mat-error>
     </mat-form-field>
-    <button mat-button class="flex-button" type="submit" [disabled]="!codeFormControl.valid" >Submit</button>
+    <br>
+    <button mat-button class="flex-button" type="submit" [disabled]="!codeFormControl.valid" >Try Code</button>
   </form>
-  <div class="flex-textitem"></div>
+  <div  *ngIf="!showAreYouReady"  class="item"></div>
 </div>
 
+<!--<span [innerHtml]="riddle"></span>-->
 <!--
 <div>
   <table class="riddleTable">

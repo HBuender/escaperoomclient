@@ -1,14 +1,14 @@
 
 export class SolutionResult {
-  hint: string;
-  showImage:boolean;
-  correct:boolean;
-  showTicker:boolean;
+  correct: boolean;
+  riddle: string ;
+  riddleNumber: string;
+  imageURL: string;
 
-  constructor(hint:string, showImage:boolean, correct:boolean, showTicker:boolean) {
-    this.hint=hint;
-    this.showImage=showImage;
-    this.correct=correct;
-    this.showTicker=showTicker;
+  constructor(correct: boolean, riddle: string, riddleNumber: string, imageURL: string) {
+    this.correct = correct;
+    this.riddle = riddle;
+    this.riddleNumber = riddleNumber;
+    this.imageURL = imageURL;
   }
 }
