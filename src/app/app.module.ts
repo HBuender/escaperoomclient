@@ -7,14 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RiddleComponent } from './riddle/riddle.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/compiler';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -23,10 +23,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
 };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RiddleComponent
-  ],
+  declarations: [AppComponent, RiddleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,27 +31,25 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
+    MatButtonModule,
     MatToolbarModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     FlexLayoutModule,
   ],
-  exports: [
-    MatFormFieldModule,
-  ],
+  exports: [MatFormFieldModule],
   providers: [
     AppConfigService,
     {
       provide: APP_INITIALIZER,
       useFactory: appInitializerFn,
       multi: true,
-      deps: [AppConfigService]
+      deps: [AppConfigService],
     },
-    HttpClientModule
-
+    HttpClientModule,
   ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
