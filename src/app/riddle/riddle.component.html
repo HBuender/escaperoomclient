@@ -1,41 +1,31 @@
 <div id="main-container">
   <div id="main-card">
     <h1>PD Escape Room</h1>
-    <img
-      id="always-locked-up"
-      src="/assets/AlwaysTogetherAlwaysLockedUp.png"
-      alt="Wimmelbild"
-      width="400"
-      height="240"
-    />
+    <img id="always-locked-up" src="/assets/AlwaysTogetherAlwaysLockedUp.png" alt="Wimmelbild" width="400"
+      height="240" />
 
     <i>Welcome to our virtual Escape Room Game</i>
     <br />
     <b>The one and only “Escape the MS Teams Room” challenge!</b>
-    <br />Your task as a team for the next <b>60 minutes</b> is to solve four
-    riddles. <br />The solution to each riddle is a code. <br />After having
-    solved one riddle, you must enter the code within this website. <br />You
-    will then receive instructions to the next riddle. <br />For each of the
-    first three riddles, there are five different pieces that you as a team must
-    put together.
+    <br />Your task as a team for the next <b>60 minutes</b> is to solve four riddles.
+    <br />The solution to each riddle is a code.
+    <br />After having solved one riddle, you must enter the code within this website.
+    <br />You will then receive instructions to the next riddle.
+    <br />For each of the first three riddles, there are five different pieces that you as a team must put together.
     <br />
     <br />Here are the links to the five pieces: <br />
 
     <div id="pieces">
-      <a
-        *ngFor="let piece of pieces"
-        target="_blank"
-        mat-flat-button
-        color="primary"
-        [href]="piece.path"
-        >{{ piece.name }}</a
-      >
+      <a *ngFor="let piece of pieces" target="_blank" mat-flat-button color="primary" [href]="piece.path">
+        {{piece.name}}
+      </a>
     </div>
 
     <br />
-    <br />It is recommendable that each player takes care of one piece, in order
-    for you to be fast. <br />The team which solves all the riddles the fastest,
-    wins!”
+    <br />
+    It is recommendable that each player takes care of one piece, in order for you to be fast.
+    <br />
+    The team which solves all the riddles the fastest, wins!”
     <div *ngIf="showFirstRiddle">
       <br *ngIf="!showImage" />
       All clear? If so, start with the first riddle right below”
@@ -50,12 +40,7 @@
     <form class="example-form" (ngSubmit)="proposeSolution()">
       <mat-form-field class="example-full-width">
         <mat-label>Code</mat-label>
-        <input
-          type="text"
-          matInput
-          [formControl]="codeFormControl"
-          placeholder="1234"
-        />
+        <input type="text" matInput [formControl]="codeFormControl" placeholder="1234" />
 
         <mat-error *ngIf="codeFormControl.hasError('required')">
           Code is <strong>required</strong>
@@ -71,29 +56,12 @@
 
     <mat-form-field class="example-full-width-result">
       <mat-label>Result</mat-label>
-      <textarea
-        [formControl]="resultFormControl"
-        matInput
-        placeholder="Ex. It makes me feel... "
-        [readonly]="true"
-        [mat-autosize]="true"
-      ></textarea>
+      <textarea [formControl]="resultFormControl" matInput placeholder="Ex. It makes me feel... " [readonly]="true"
+        [mat-autosize]="true"></textarea>
     </mat-form-field>
 
-    <img
-      *ngIf="showImage"
-      src="/assets/Wimmelbild.png"
-      alt="Wimmelbild"
-      width="1024"
-      height="720"
-    />
-    <img
-      *ngIf="showTicker"
-      src="/assets/ticker.gif"
-      alt="Ticker"
-      width="1024"
-      height="720"
-    />
+    <img *ngIf="showImage" src="/assets/Wimmelbild.png" alt="Wimmelbild" width="1024" height="720" />
+    <img *ngIf="showTicker" src="/assets/ticker.gif" alt="Ticker" width="1024" height="720" />
   </div>
 </div>
 <!--
