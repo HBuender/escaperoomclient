@@ -1,2 +1,2 @@
-call docker build -t hbuender/escaperoomclient:latest .
-call docker push hbuender/escaperoomclient:latest
+call docker build -t hbuender/connectionroomclient:latest .
+call docker push hbuender/connectionroomclient:latest

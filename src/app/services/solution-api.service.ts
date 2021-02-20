@@ -10,18 +10,18 @@ import {EscapeRoom} from '../model/escape-room';
 })
 export class SolutionAPIService {
 
-  private solutionProposalURL: string;
+  //private solutionProposalURL: string;
   private servicesBaseUrl: string;
 
   constructor(private environment: AppConfigService, private http: HttpClient) {
-    //this.solutionProposalURL = 'http://139.59.144.247:8080/solutionProposal';
-    this.solutionProposalURL = environment.config.solutionProposalURL;
+    // this.solutionProposalURL = 'http://139.59.144.247:8080/solutionProposal';
+    //this.solutionProposalURL = environment.config.solutionProposalURL;
     this.servicesBaseUrl = environment.config.servicesBaseUrl;
 
   }
 
   public proposeSolution(solutionProposal: SolutionProposal) {
-    return this.http.post<SolutionResult>(this.solutionProposalURL, solutionProposal);
+    return this.http.post<SolutionResult>(this.servicesBaseUrl + 'solutionProposal', solutionProposal);
   }
 
   public initEscapeRoom() {
