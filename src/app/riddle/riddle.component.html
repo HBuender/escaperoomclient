@@ -22,14 +22,9 @@
   <div class="item">
       <button type="button" class="collapsible" (click)="toggleShowHints()"><i>Hints</i></button>
       <div *ngIf="showHints" >
-        <br>Here are the links to the five pieces:
-        <br>Piece A: <a target="_blank"  href="assets/pdfs/Connectionroom_Forum_PlayerA.pdf">Riddles for the first Player</a>
-        <br>Piece B: <a target="_blank"  href="assets/pdfs/Connectionroom_Forum_PlayerB.pdf">Riddles for the second Player</a>
-        <br>Piece C: <a target="_blank"  href="assets/pdfs/Connectionroom_Forum_PlayerC.pdf">Riddles for the third Player</a>
-        <br>Piece D: <a target="_blank"  href="assets/pdfs/Connectionroom_Forum_PlayerD.pdf">Riddles for the fourth Player</a>
-        <br>Piece E: <a target="_blank"  href="assets/pdfs/Connectionroom_Forum_PlayerE.pdf">Riddles for the fifth Player</a>
-        <br>
-        <br>It is recommendable that each player takes care of one piece, in order for you to be fast.
+        <a *ngFor="let piece of pieces" target="_blank" mat-flat-button color="primary" [href]="piece.path">
+          {{piece.name}}
+        </a>
       </div>
   </div>
   <div class="item"></div>
@@ -48,7 +43,7 @@
   <!-- Riddle Row -->
   <div *ngIf="!showAreYouReady" class="item"></div>
   <div *ngIf="!showAreYouReady" class="item">
-    <h2>Riddle {{riddleNumber}}</h2>
+    <h2>{{titleRiddle}}</h2>
     <span [innerHtml]="riddle"></span>
   </div>
   <!-- <img  *ngIf="showTicker" src="/assets/ticker.gif" alt="Ticker" width="1024" height="720">-->
@@ -149,73 +144,5 @@
     </tr>
     </tbody>
   </table>
-</div>
--->
-<!--
-<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="left">
-  <div fxFlex="flGrow">
-    <img mat-card-image class="img" src="/assets/AlwaysTogetherAlwaysLockedUp.png"  >
-  </div>
-  <div fxFlex="fxFlex">
-
-  </div>
-</div>
-
--->
-
-
-<!--
-<div class="row">
-  <div class="column">
-    <img  src="/assets/AlwaysTogetherAlwaysLockedUp.png" alt="Wimmelbild" width="600" height="480">
-  </div>
-  <div class="column">
-  <div class="centred-table">
-    <table class="centred-table">
-      <tbody>
-      <tr>
-      <td>
-        <h1 class="titleBold">PD Escape Room</h1>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-        <form class="example-form" (ngSubmit)="proposeSolution()" >
-          <mat-form-field class="example-full-width">
-            <mat-label>Code</mat-label>
-            <input type="text" matInput [formControl]="codeFormControl" placeholder="12345">
-
-            <mat-error *ngIf="codeFormControl.hasError('required')">
-              Code is <strong>required</strong>
-            </mat-error>
-            <mat-error *ngIf="codeFormControl.hasError('incorrect')">
-              Code is <strong>incorrect</strong>
-            </mat-error>
-          </mat-form-field>
-        <button mat-button type="submit" [disabled]="!codeFormControl.valid" >Submit</button>
-        </form>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>Result</mat-label>
-            <textarea [formControl]="resultFormControl"  matInput placeholder="Ex. It makes me feel... " [readonly]="true" [mat-autosize]="true"></textarea>
-          </mat-form-field>
-        </td>
-        <td></td>
-        </tr>
-      <tr>
-        <td>
-          <img  *ngIf="showImage" src="/assets/Wimmelbild.png" alt="Wimmelbild" width="1024" height="720">
-        </td>
-        <td></td>
-      </tr>
-      </tbody>
-  </table>
-  </div>
-  </div>
 </div>
 -->
