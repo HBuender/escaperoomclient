@@ -8,6 +8,8 @@ orbs:
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/node
   node: circleci/node@4.1
 
+cache_key: &cache_key cg-front-end-deps-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
+dist_key: &dist_key cg-front-end-dist-{{ .Revision }}
 
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
