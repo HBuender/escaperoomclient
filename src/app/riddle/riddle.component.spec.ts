@@ -3,6 +3,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RiddleComponent } from './riddle.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SolutionAPIService} from '../services/solution-api.service';
+import {AppConfigService} from '../services/app-config.service';
+import {EscapeRoom} from '../model/escape-room';
+import {Observable} from 'rxjs/internal/Observable';
+import {of} from 'rxjs/internal/observable/of';
 
 export class ActivatedRouteMock{
 }
@@ -11,6 +15,13 @@ export class RouterMock{
 }
 
 export class SolutionAPIServiceMock{
+  public initEscapeRoom(){
+    return of(new EscapeRoom());
+
+}
+}
+
+export class AppConfigServiceMock{
 }
 
 
@@ -22,6 +33,7 @@ describe('RiddleComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ RiddleComponent ],
         providers: [
+          { provide: AppConfigService,  useClass: AppConfigServiceMock },
           { provide: ActivatedRoute,  useClass: ActivatedRouteMock },
           { provide: Router,  useClass: RouterMock },
           { provide: SolutionAPIService,  useClass: SolutionAPIServiceMock },

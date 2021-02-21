@@ -1,3 +1,3 @@
 {
-  "solutionProposalURL":"${API_URL}"
+  "servicesBaseUrl":"${API_URL}"
 }

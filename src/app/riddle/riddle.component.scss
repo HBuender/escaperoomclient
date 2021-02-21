@@ -1,28 +1,70 @@
-#main-container {
-  width: calc(100vw - 100px);
-  height: calc(100vh - 100px);
-  display: flex;
-  flex-direction: column;
-  background-color: #cbe4f4;
-  padding: 50px;
-
-  #main-card {
-    border-radius: 12px;
-    background-color: white;
-    padding: 20px;
-    align-self: center;
-    width: 80%;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    h1,
-    #always-locked-up {
-      align-self: center;
-    }
-
-    #pieces {
-      display: flex;
-      gap: 10px;
-    }
+@mixin max-width($width) {
+  @media screen and (max-width: $width) {
+    @content;
   }
 }
+.wrapper {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+}
+.container {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+}
+.item {
+  //background-color: tomato;
+  box-sizing: border-box;
+  padding: 20px;
+  //outline: 2px solid blue;
+  flex: 1;
+  text-align: center;
+  font-family: "Source Sans Pro";
+}
+.media-item{
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  grid-column: span 3;
+}
+
+@include max-width(992px) {
+  .item {
+    flex-basis: 25%;
+    background-color: red;
+  }
+}
+
+@include max-width(640px) {
+  .item {
+    flex-basis: 50%;
+    background-color: green;
+  }
+}
+
+
+.flex-button {
+  padding: 5px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.collapsible {
+  cursor: pointer;
+  background: #FAFAFA;
+  padding: 2px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  font-family: "Source Sans Pro Black";
+}
+
