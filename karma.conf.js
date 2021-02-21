@@ -17,7 +17,7 @@ module.exports = function (config) {
     customLaunchers: {
       ChromeHeadless: {
         base: 'Chrome',
-        flags: ['--no-sandbox', '--log-level debug']
+        flags: ['--no-sandbox','--disable-setuid-sandbox']
       }
     },
     client: {
