@@ -19,6 +19,8 @@ jobs:
       - image: cimg/node:15.1
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
+    environment:
+      CHROME_BIN: /usr/bin/google-chrome
     steps:
       # Checkout the code as the first step.
       - checkout
