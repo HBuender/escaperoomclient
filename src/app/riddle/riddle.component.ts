@@ -32,11 +32,10 @@ export class RiddleComponent implements OnInit {
   titleRiddle = '1';
   riddle = `Could not be loaded`;
   public pieces = [
-    { name: 'Piece A', path: 'assets/pdfs/Connectionroom_Forum_PlayerA.pdf' },
-    { name: 'Piece B', path: 'assets/pdfs/Connectionroom_Forum_PlayerB.pdf' },
-    { name: 'Piece C', path: 'assets/pdfs/Connectionroom_Forum_PlayerC.pdf' },
-    { name: 'Piece D', path: 'assets/pdfs/Connectionroom_Forum_PlayerD.pdf' },
-    { name: 'Piece E', path: 'assets/pdfs/Connectionroom_Forum_PlayerE.pdf' },
+    { name: 'Hinweise Spieler 1', path: 'assets/pdfs/KV_Escaperoom_Player1.pdf' },
+    { name: 'Hinweise Spieler 2', path: 'assets/pdfs/KV_Escaperoom_Player2.pdf' },
+    { name: 'Hinweise Spieler 3', path: 'assets/pdfs/KV_Escaperoom_Player3.pdf' },
+    { name: 'Hinweise Spieler 4', path: 'assets/pdfs/KV_Escaperoom_Player4.pdf' },
   ];
   ngOnInit(): void {
     this.solutionService.initEscapeRoom().subscribe((data: EscapeRoom) => {

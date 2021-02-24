@@ -1,19 +1,19 @@
 <div class="wrapper">
   <!-- Header Row - Logo -->
   <div class="item"></div>
-  <img  class="center" src="/assets/SW_ConnectionRoom.png" alt="Serviceware Connection Room" >
+  <img  class="center" src="/assets/KVEscapeRoom.png" alt="KVV Escape Room" >
   <div class="item"></div>
   <!-- Collabsiple Welcome Text -->
   <div class="item"></div>
   <div class="item">
-    <button type="button" class="collapsible" (click)="toggleShowInfoText()"><h1><i>Welcome to the virtual Serviceware Connection Room</i></h1></button>
+    <button type="button" class="collapsible" (click)="toggleShowInfoText()"><h1><i>Herzlich Willkommen im KV Escape Room</i></h1></button>
     <div *ngIf="showInfoText">
-    Your task as a team for the next <b>20 minutes</b> is to solve four riddles.
-    <br>The solution to each riddle is a code.
-    <br>After having solved one riddle, you must enter the code within this website.
-    <br>You will then receive instructions to the next riddle.
-    <br>For each of the riddles, there are five different pieces that you as a team must put together.
-    <br>When you finish all riddles you will be pointed to the next sessions!”
+    Eure Aufgabe für die nächsten <b>60 Minuten</b>: Löst die Rätsel, um den Code am Zahlenschloss der Tür zu knacken!
+    <br>Die Lösung zu jedem Rätsel ist ein Code, den ihr im Feld unten eingeben und prüfen könnt.
+    <br>Ist der Code für das jeweilige Rätsel richtig erhaltet ihr das nächste Rätsel.
+    <br>Irgendwann hoffentlich den finalen Code um das Schloss der Tür zu öffnen und zu fliehen.
+    <br>Um die Rätsel lösen zu können erhält jeder Spieler einen Zettel mit Hinweisen (s. unten).
+    <br>
     </div>
   </div>
   <div class="item"></div>
@@ -22,6 +22,10 @@
   <div class="item">
       <button type="button" class="collapsible" (click)="toggleShowHints()"><i>Hints</i></button>
       <div *ngIf="showHints" >
+        <br>Pro Spieler gibt es einen Hinweiszettel (bei drei Spielern muss einer zwei nehmen).
+        <br>Jeder Zettel enthält Hinweise, die euch zusammen mit dem passenden Rätsel zum richtigen Code führen.
+        <br>
+        <br>
         <a *ngFor="let piece of pieces" target="_blank" mat-flat-button color="primary" [href]="piece.path">
           {{piece.name}}
         </a>
@@ -31,8 +35,8 @@
   <!-- Are you ready? -->
   <div *ngIf="showAreYouReady" class="item"></div>
   <div *ngIf="showAreYouReady"class="item">
-      <b>All clear?</b>
-      <br><button type="button" (click)="toggleShowFirstRiddle()"><i>Let's get started!</i></button>
+      <b>Alles verstanden?</b>
+      <br><button type="button" (click)="toggleShowFirstRiddle()"><i>Klick und es geht los!</i></button>
   </div>
   <div *ngIf="showAreYouReady" class="item"></div>
 
