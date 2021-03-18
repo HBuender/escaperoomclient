@@ -6,7 +6,7 @@
   <!-- Collabsiple Welcome Text -->
   <div class="item"></div>
   <div class="item">
-    <button type="button" class="collapsible" (click)="toggleShowInfoText()"><h1><i>Herzlich Willkommen im KV Escape Room</i></h1></button>
+    <button type="button" class="collapsible" (click)="toggleShowInfoText()"><h1><i>Herzlich Willkommen im KV Escape Room </i><b buib*ngIf="!showAreYouReady">v</b></h1></button>
     <div *ngIf="showInfoText">
     Eure Aufgabe für die nächsten <b>60 Minuten</b>: Löst die Rätsel, um den Code am Zahlenschloss der Tür zu knacken!
     <br>Die Lösung zu jedem Rätsel ist ein Code, den ihr im Feld unten eingeben und prüfen könnt.
@@ -20,7 +20,7 @@
   <!-- Collabsiple Hints -->
   <div class="item"></div>
   <div class="item">
-      <button type="button" class="collapsible" (click)="toggleShowHints()"><i>Hints</i></button>
+    <button type="button" class="collapsible" (click)="toggleShowHints()"><i>Hinweise </i><b *ngIf="!showAreYouReady">v</b></button>
       <div *ngIf="showHints" >
         <br>Pro Spieler gibt es einen Hinweiszettel (bei drei Spielern muss einer zwei nehmen).
         <br>Jeder Zettel enthält Hinweise, die euch zusammen mit dem passenden Rätsel zum richtigen Code führen.
@@ -35,7 +35,7 @@
   <!-- Are you ready? -->
   <div *ngIf="showAreYouReady" class="item"></div>
   <div *ngIf="showAreYouReady"class="item">
-      <b>Alles verstanden?</b>
+      <b>Habt ihr die Hinweise verteilt und die Aufgaben verstanden?</b>
       <br><button type="button" (click)="toggleShowFirstRiddle()"><i>Klick und es geht los!</i></button>
   </div>
   <div *ngIf="showAreYouReady" class="item"></div>
@@ -54,7 +54,7 @@
   <div *ngIf="!showAreYouReady" class="item"></div>
 
   <div  *ngIf="!showAreYouReady" class="item"></div>
-  <form  *ngIf="!showAreYouReady"  class="item" (ngSubmit)="proposeSolution()" >
+  <form  *ngIf="!showAreYouReady" class="item" (ngSubmit)="proposeSolution()" >
     <mat-form-field >
       <mat-label>Code</mat-label>
       <input type="text" matInput [formControl]="codeFormControl" placeholder="12345">
