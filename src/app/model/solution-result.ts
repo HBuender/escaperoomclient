@@ -1,14 +1,12 @@
+import {Riddle} from './riddle';
+
 
 export class SolutionResult {
   correct: boolean;
-  riddle: string ;
-  titleRiddle: string;
-  imageURL: string;
+  riddle: Riddle;
 
-  constructor(correct: boolean, riddle: string, titleRiddle: string, imageURL: string) {
+  constructor(correct: boolean, riddle: Riddle) {
     this.correct = correct;
     this.riddle = riddle;
-    this.titleRiddle = titleRiddle;
-    this.imageURL = imageURL;
   }
 }

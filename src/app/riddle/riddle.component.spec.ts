@@ -7,6 +7,9 @@ import {AppConfigService} from '../services/app-config.service';
 import {EscapeRoom} from '../model/escape-room';
 import {Observable} from 'rxjs/internal/Observable';
 import {of} from 'rxjs/internal/observable/of';
+import {Riddle} from '../model/riddle';
+import {ImageContent} from '../model/image-content';
+import {StaticTextContent} from '../model/static-text-content';
 
 export class ActivatedRouteMock{
 }
@@ -15,8 +18,11 @@ export class RouterMock{
 }
 
 export class SolutionAPIServiceMock{
-  public initEscapeRoom(){
-    return of(new EscapeRoom());
+  public initEscapeRoom(): Observable<EscapeRoom> {
+    const imageContent = new ImageContent('', '', '');
+    const riddle = new Riddle('Test', '1', imageContent );
+    const staticTextContent = new StaticTextContent('', '', '', '', '', '');
+    return of(new EscapeRoom(riddle, imageContent, [], staticTextContent));
 
 }
 }
