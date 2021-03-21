@@ -7,6 +7,9 @@ import {SolutionProposal} from '../model/solution-proposal';
 import {SolutionResult} from '../model/solution-result';
 import {EscapeRoom} from '../model/escape-room';
 import {AppConfigService} from '../services/app-config.service';
+import {Riddle} from '../model/riddle';
+import {ImageContent} from '../model/image-content';
+import {Hint} from '../model/hint';
 
 
 @Component({
@@ -31,17 +34,28 @@ export class RiddleComponent implements OnInit {
   mediaContent = '';
   titleRiddle = '1';
   riddle = `Could not be loaded`;
-  public pieces = [
-    { name: 'Piece A', path: 'assets/pdfs/Connectionroom_Forum_PlayerA.pdf' },
-    { name: 'Piece B', path: 'assets/pdfs/Connectionroom_Forum_PlayerB.pdf' },
-    { name: 'Piece C', path: 'assets/pdfs/Connectionroom_Forum_PlayerC.pdf' },
-    { name: 'Piece D', path: 'assets/pdfs/Connectionroom_Forum_PlayerD.pdf' },
-    { name: 'Piece E', path: 'assets/pdfs/Connectionroom_Forum_PlayerE.pdf' },
-  ];
+  titleImage = '';
+  escapeRoomTitle = '';
+  escapeRoomDescription = '';
+  pieces: Hint[] = [];
+  hintTitle = '';
+  hintDescription = '';
+  areYouReadyTitle = '';
+  areYouReadyDescription = '';
   ngOnInit(): void {
     this.solutionService.initEscapeRoom().subscribe((data: EscapeRoom) => {
-      this.titleRiddle = data.titleRiddle;
-      this.riddle = data.initialRiddle;
+      console.log(data);
+      this.titleRiddle = data.initialRiddle.titleRiddle;
+      this.riddle = data.initialRiddle.riddle;
+      this.titleImage = this.getImageURL(data.picture);
+      data.hints.forEach(hint => this.pieces.push(new Hint(hint.title, this.environment.config.servicesBaseUrl + hint.url)));
+      this.escapeRoomTitle = data.staticTextContent.escapeRoomTitle;
+      this.escapeRoomDescription = data.staticTextContent.escapeRoomDescription;
+      this.hintTitle = data.staticTextContent.hintTitle;
+      this.hintDescription = data.staticTextContent.hintDescription;
+      this.areYouReadyTitle = data.staticTextContent.areYouReadyTitle;
+      this.areYouReadyDescription = data.staticTextContent.areYourReadyDescription;
+
   });
   }
 
@@ -63,15 +77,19 @@ export class RiddleComponent implements OnInit {
     console.log(this.codeFormControl.value);
     this.solutionService.proposeSolution(new SolutionProposal(this.codeFormControl.value)).subscribe((data: SolutionResult) => {
       console.log(data);
-      console.log(data.riddle);
-      console.log(data.titleRiddle);
       if (data.correct){
-        this.riddle = data.riddle;
-        this.titleRiddle = data.titleRiddle;
+        console.log(data.riddle);
+        console.log(data.riddle.titleRiddle);
+        this.riddle = data.riddle.riddle;
+        this.titleRiddle = data.riddle.titleRiddle;
         this.codeFormControl.setValue('');
-        if (data.imageURL != null){
-            console.log(`<img src="` + this.environment.config.servicesBaseUrl + data.imageURL + `"/>`);
-            this.mediaContent = `<img src="` + this.environment.config.servicesBaseUrl + data.imageURL + `"/>`;
+        if (data.riddle.imageContent != null){
+            console.log(`<img src="` + this.environment.config.servicesBaseUrl + data.riddle.imageContent.imageURL + `"/>`);
+            const imageURL = this.getImageURL(data.riddle.imageContent);
+            const width = data.riddle.imageContent.width;
+            const height = data.riddle.imageContent.height;
+            this.mediaContent = `<img src="` + imageURL + `"  width="` + width + `"  height="` + height + `"/>`;
+            console.log(this.mediaContent);
         }else {
           this.mediaContent = '';
         }
@@ -79,5 +97,8 @@ export class RiddleComponent implements OnInit {
         this.codeFormControl.setErrors({incorrect: true});
       }
     });
+  }
+  private getImageURL(imageContent: ImageContent): string{
+    return this.environment.config.servicesBaseUrl + imageContent.imageURL;
   }
 }
