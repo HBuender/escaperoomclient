@@ -47,11 +47,10 @@
   <div *ngIf="!showAreYouReady" class="item"></div>
 
   <div  *ngIf="!showAreYouReady" class="item"></div>
-  <form  *ngIf="!showAreYouReady" class="item" (ngSubmit)="proposeSolution()" >
+  <form  *ngIf="!showAreYouReady" class="item" [formGroup]="codeFormGroup" #formDirective="ngForm"  (ngSubmit)="proposeSolution(codeFormGroup, formDirective)" >
     <mat-form-field >
       <mat-label>Code</mat-label>
-      <input type="text" matInput [formControl]="codeFormControl" placeholder="12345">
-
+      <input type="text" matInput [formControl]="codeFormControl" placeholder="A-Z12345">
       <mat-error *ngIf="codeFormControl.hasError('required')">
         Code is <strong>required</strong>
       </mat-error>
@@ -60,7 +59,7 @@
       </mat-error>
     </mat-form-field>
     <br>
-    <button mat-button class="flex-button" type="submit" [disabled]="!codeFormControl.valid" >Try Code</button>
+    <button class="flex-button" type="submit" [disabled]="!codeFormControl.valid" >Try Code</button>
   </form>
   <div  *ngIf="!showAreYouReady"  class="item"></div>
 </div>

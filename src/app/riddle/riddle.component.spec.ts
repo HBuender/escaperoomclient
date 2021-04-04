@@ -10,6 +10,7 @@ import {of} from 'rxjs/internal/observable/of';
 import {Riddle} from '../model/riddle';
 import {ImageContent} from '../model/image-content';
 import {StaticTextContent} from '../model/static-text-content';
+import {FormBuilder} from '@angular/forms';
 
 export class ActivatedRouteMock{
 }
@@ -29,6 +30,9 @@ export class SolutionAPIServiceMock{
 
 export class AppConfigServiceMock{
 }
+export class FormBuilderMock{
+
+}
 
 
 describe('RiddleComponent', () => {
@@ -43,6 +47,7 @@ describe('RiddleComponent', () => {
           { provide: ActivatedRoute,  useClass: ActivatedRouteMock },
           { provide: Router,  useClass: RouterMock },
           { provide: SolutionAPIService,  useClass: SolutionAPIServiceMock },
+          { provide: FormBuilder,  useClass: FormBuilder },
         ]
     }
       )

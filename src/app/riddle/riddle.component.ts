@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
-import {FormControl, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SolutionAPIService} from '../services/solution-api.service';
 import {SolutionProposal} from '../model/solution-proposal';
@@ -21,13 +21,17 @@ export class RiddleComponent implements OnInit {
 
   constructor( private environment: AppConfigService,  private route: ActivatedRoute,
                private router: Router,
-               private solutionService: SolutionAPIService) {
+               private solutionService: SolutionAPIService,
+               private formBuilder: FormBuilder) {
+    this.codeFormGroup = formBuilder.group({codeControlForm: this.codeFormControl});
   }
+
+   codeFormGroup: FormGroup;
 
   codeFormControl = new FormControl('', [
     Validators.required,
   ]);
-  resultFormControl = new FormControl();
+
   showInfoText = true;
   showHints = true;
   showAreYouReady = true;
@@ -73,7 +77,7 @@ export class RiddleComponent implements OnInit {
 
   }
 
-  proposeSolution(): void {
+  proposeSolution(formData: any, formDirective: FormGroupDirective): void {
     console.log(this.codeFormControl.value);
     this.solutionService.proposeSolution(new SolutionProposal(this.codeFormControl.value)).subscribe((data: SolutionResult) => {
       console.log(data);
@@ -93,6 +97,8 @@ export class RiddleComponent implements OnInit {
         }else {
           this.mediaContent = '';
         }
+        formDirective.resetForm();
+        this.codeFormGroup.reset();
       }else{
         this.codeFormControl.setErrors({incorrect: true});
       }
