@@ -6,7 +6,7 @@
   <!-- Collabsiple Welcome Text -->
   <div class="item"></div>
   <div class="item">
-    <button type="button" class="collapsible" (click)="toggleShowInfoText()"><h1><i>{{escapeRoomTitle}} </i><b *ngIf="!showAreYouReady">v</b></h1></button>
+    <button type="button" class="collapsible" (click)="toggleShowInfoText()"><h1><em>{{escapeRoomTitle}} </em><strong *ngIf="!showAreYouReady">v</strong></h1></button>
     <div *ngIf="showInfoText">
     <span [innerHtml]="escapeRoomDescription"></span>
     </div>
@@ -15,7 +15,7 @@
   <!-- Collabsiple Hints -->
   <div class="item"></div>
   <div class="item">
-    <button type="button" class="collapsible" (click)="toggleShowHints()"><i>{{hintTitle}} </i><b *ngIf="!showAreYouReady">v</b></button>
+    <button type="button" class="collapsible" (click)="toggleShowHints()"><em>{{hintTitle}} </em><strong *ngIf="!showAreYouReady">v</strong></button>
       <div *ngIf="showHints" >
         <span [innerHtml]="hintDescription"></span>
         <br>
@@ -30,7 +30,7 @@
   <div *ngIf="showAreYouReady" class="item"></div>
   <div *ngIf="showAreYouReady"class="item">
       <span [innerHtml]="areYouReadyDescription"></span>
-      <br><button type="button" (click)="toggleShowFirstRiddle()"><i>{{areYouReadyTitle}}</i></button>
+      <br><button type="button" (click)="toggleShowFirstRiddle()"><em>{{areYouReadyTitle}}</em></button>
   </div>
   <div *ngIf="showAreYouReady" class="item"></div>
 
