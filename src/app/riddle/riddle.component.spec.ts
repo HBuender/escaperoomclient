@@ -30,7 +30,7 @@ export class SolutionAPIServiceMock{
 }
 
 export class AppConfigServiceMock{
-  get config() {
+  get config(): string {
     return '{baseConfigURL:"default"}';
   }
 }

@@ -12,8 +12,6 @@ module.exports = function (config) {
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
-    browsers: ['ChromeHeadless'],
-
     customLaunchers: {
       ChromeHeadless: {
         base: 'Chrome',
