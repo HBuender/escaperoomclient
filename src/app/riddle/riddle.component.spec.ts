@@ -11,6 +11,7 @@ import {Riddle} from '../model/riddle';
 import {ImageContent} from '../model/image-content';
 import {StaticTextContent} from '../model/static-text-content';
 import {FormBuilder} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
 
 export class ActivatedRouteMock{
 }
@@ -29,6 +30,9 @@ export class SolutionAPIServiceMock{
 }
 
 export class AppConfigServiceMock{
+  get config() {
+    return '{baseConfigURL:"default"}';
+  }
 }
 export class FormBuilderMock{
 
