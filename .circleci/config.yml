@@ -24,6 +24,26 @@ jobs:
     environment:
       CHROME_BIN: /usr/bin/google-chrome
     steps:
+      - run:
+          name: Install OS tools
+          # TODO: replace with install_os_pkgs.sh script
+          command: |
+            apk update && apk add git
+            apk add openssh
+            apk add tar
+            apk add ca-certificates
+            apk update && apk upgrade && \
+            echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories
+            echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories
+            apk add --no-cache \
+               chromium@edge \
+               nss@edge \
+               freetype@edge \
+               harfbuzz@edge \
+               ttf-freefont@edge
+            apk add --no-cache ttf-freefont
+
+
       # Checkout the code as the first step.
       - checkout
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
