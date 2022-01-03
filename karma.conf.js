@@ -12,10 +12,18 @@ module.exports = function (config) {
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
+    browsers: ['Chrome', 'CircleCI_ChromeHeadless'],
     customLaunchers: {
-      ChromeHeadless: {
-        base: 'Chrome',
-        flags: isDocker ? ['--no-sandbox'] : []
+      CircleCI_ChromeHeadless: {
+        base: 'ChromeHeadless',
+        flags: [
+          '--headless',
+          '--disable-gpu',
+          '--disable-translate',
+          '--disable-extensions',
+          '--no-sandbox',  // Added to fix an issue where of Failed to connect to chrome browser
+          '--remote-debugging-port=9222',
+        ],
       }
     },
     client: {
