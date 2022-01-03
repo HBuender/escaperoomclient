@@ -33,6 +33,12 @@ jobs:
       # - node/install-packages:
       #     pkg-manager: yarn
       - run:
+          name: Test WUF
+          command: |
+            # ng test --browsers CircleCI_ChromeHeadless --watch=false
+            ng test --browsers CircleCI_ChromeHeadless
+            # ng test
+      - run:
           name: Run tests
           command: npm test
 
