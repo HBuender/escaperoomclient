@@ -5,11 +5,12 @@ import {AppConfigService} from './app-config.service';
 import {HttpClient} from '@angular/common/http';
 
 export class AppConfigServiceMock{
-  config(){[]}
+  config(): void {
+    const baseURL = '';
+  }
 }
-export class HttpClientMock{
-  config(){[]}
-}
+export class HttpClientMock{}
+
 
 describe('SolutionAPIService', () => {
   let service: SolutionAPIService;
