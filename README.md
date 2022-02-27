@@ -1,4 +1,6 @@
 # Escaperoomclient
+[![HBuender](https://circleci.com/gh/HBuender/escaperoomclient.svg?style=shield)](https://app.circleci.com/pipelines/github/HBuender/escaperoomclient?filter=all)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
