@@ -19,6 +19,9 @@ jobs:
     # A list of available CircleCI docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/node
     docker:
       - image: hbuender/escaperoomclienttest:latest
+        auth:
+          username: hbuender
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     environment:
