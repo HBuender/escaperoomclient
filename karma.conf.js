@@ -13,7 +13,7 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma'),
       require('karma-junit-reporter')
     ],
-    browsers: ['ChromeHeadless', 'CircleCI_ChromeHeadless'],
+    browsers: ['CircleCI_ChromeHeadless'],
     customLaunchers: {
       CircleCI_ChromeHeadless: {
         base: 'ChromeHeadless',
