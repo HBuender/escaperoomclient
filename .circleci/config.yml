@@ -39,7 +39,7 @@ jobs:
           name: Run tests
           command: npm test
       - store_test_results:
-          path:test-results/karma
+          path: test-results/karma
 
 workflows:
   # Below is the definition of your workflow.
