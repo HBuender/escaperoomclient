@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 
-RUN npm install --ingore-scripts
+RUN npm install --ignore-scripts
 
 COPY . .
 
