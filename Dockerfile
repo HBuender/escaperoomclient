@@ -10,7 +10,7 @@ COPY . .
 
 RUN npm run build --prod
 
-FROM nginx:1.25.4-alpine
+FROM nginx:1.27.2-alpine
 
 COPY --from=builder /usr/src/app/dist/escaperoomclient/ /usr/share/nginx/html
 
